@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>今日课表</title>
+	<title>本周课表</title>
 	<style type="text/css">
 		table{
 			width: 100%;
@@ -27,11 +27,9 @@
 <body>
 	<table>
 		<caption height="60px">
-			<input type="button" style="width:55px; height:46px; border:0; background:url(image/sao.png) no-repeat left top; float: left"
-			onclick="alert('杨承霖qnmd')">
+			<input type="button" style="width:55px; height:46px; border:0; background:url(image/sao.png) no-repeat left top; float: left">
             <span align="center">第1周<img src="image/ycl.png"></span>
-            <input type="button" style="width:55px; height:46px; border:0; background:url(image/+.png) no-repeat right top; float: right"
-            onclick="postRequest()">
+            <input type="button" style="width:55px; height:46px; border:0; background:url(image/+.png) no-repeat right top; float: right">
         </caption>
 	  
 	  <!-- 课表内容 -->
@@ -49,19 +47,19 @@
 			<th rowspan="1" bgcolor="LightGoldenRodYellow">第1节</th>
 			<td> </td>
     		<td> </td>
-    		<!--<td rowspan="2" align="center" bgcolor="#fc9ad3">软件工程导论<br>-->
-    			<!--@1210<br></td>-->
+    		<td rowspan="2" align="center" bgcolor="#fc9ad3">软件工程导论<br>
+    			@1210<br></td>
     		<td> </td>
-    		<!--<td rowspan="2" align="center" bgcolor="#fc9ad3">软件工程导论<br>@2401<br></td>-->
-    		<!--<td rowspan="4" align="center" bgcolor="9edc23">Android移动应用开发<br>@2402<br></td>-->
+    		<td rowspan="2" align="center" bgcolor="#fc9ad3">软件工程导论<br>@2401<br></td>
+    		<td rowspan="4" align="center" bgcolor="9edc23">Android移动应用开发<br>@2402<br></td>
 		</tr>
 		<tr height="120px">
 			<th rowspan="1" bgcolor="LightGoldenRodYellow">第2节</th>
 		</tr>
 		<tr height="120px">
 			<th rowspan="1" bgcolor="LightGoldenRodYellow">第3节</th>
-			<!--<td rowspan="2" align="center" bgcolor="#7ba6f4">计算机体系结构<br>@1510<br></td>-->
-    		<!--<td rowspan="2" align="center" bgcolor="#7ba6f4">计算机体系结构<br>@1310<br></td>-->
+			<td rowspan="2" align="center" bgcolor="#7ba6f4">计算机体系结构<br>@1510<br></td>
+    		<td rowspan="2" align="center" bgcolor="#7ba6f4">计算机体系结构<br>@1310<br></td>
 		</tr>
 		<tr height="120px">
 			<th rowspan="1" bgcolor="LightGoldenRodYellow">第4节</th>
@@ -70,45 +68,20 @@
 			<th rowspan="1" bgcolor="LightGoldenRodYellow">第5节</th>
 			<td> </td>
     		<td> </td>
-    		<!--<td rowspan="2" align="center" bgcolor="f2b73f">编译原理I<br>@1210<br></td>-->
+    		<td rowspan="2" align="center" bgcolor="f2b73f">编译原理I<br>@1210<br></td>
     		<td> </td>
-    		<!--<td rowspan="4" align="center" bgcolor="9edc23">Android移动应用开发<br>@2402<br></td>-->
+    		<td rowspan="4" align="center" bgcolor="9edc23">Android移动应用开发<br>@2402<br></td>
 		</tr>
 		<tr height="120px">
 			<th rowspan="1" bgcolor="LightGoldenRodYellow">第6节</th>
 		</tr>
 		<tr height="120px">
 			<th rowspan="1" bgcolor="LightGoldenRodYellow">第7节</th>
-			<!--<td rowspan="2" align="center" bgcolor="f2b73f">软件测试技术基础I<br>@1310<br></td>-->
+			<td rowspan="2" align="center" bgcolor="f2b73f">软件测试技术基础I<br>@1310<br></td>
 		</tr>
 		<tr height="120px">
 			<th rowspan="1" bgcolor="LightGoldenRodYellow">第8节</th>
 		</tr>
 	</table>
 </body>
-<script type="text/javascript">
-    function postRequest() {
-        var postData = {
-            "stuNo": "001"
-        };
-        var req = new XMLHttpRequest();
-        
-        req.open("POST", "http://yangcl.natapp1.cc/getItem", true);
-        req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        req.onreadystatechange = function () {
-             var XMLHttpReq = req;
-             if (XMLHttpReq.readyState == 4){
-                 if (XMLHttpReq.status == 200){
-                     var data = XMLHttpReq.responseText;
-                     alert(data);
-                     console.log(data);
-                     var json = JSON.parse(JSON.parse(data));
-                 } else {
-                     //
-                 }
-             }
-        };
-        req.send(JSON.stringify(postData));
-    }
-    </script>
 </html>

@@ -119,19 +119,15 @@ void HttpServer::slotOnGetAccessToken(int nCode, QString sMsg, QString sToken)
         buttonMenu2.buttonMap.insert("url", "https://m.toutiao.com/");
 
         buttonMenu3.buttonMap.insert("name", "教务系统");
-        ButtonMenu_t sub_button3, sub_button4, sub_button5;
-        sub_button3.buttonMap.insert("name", "今日课表");
+        ButtonMenu_t sub_button3, sub_button4;
+        sub_button3.buttonMap.insert("name", "本周课表");
         sub_button3.buttonMap.insert("type", "view");
         sub_button3.buttonMap.insert("url", "https://yangchenglin815.github.io/timeTable/timeTable/src/login.html");
         buttonMenu3.subButtonList.append(sub_button3);
-        sub_button4.buttonMap.insert("name", "明日课表");
-        sub_button4.buttonMap.insert("type", "click");
-        sub_button4.buttonMap.insert("key", "V1004");
+        sub_button4.buttonMap.insert("name", "考试成绩");
+        sub_button4.buttonMap.insert("type", "view");
+        sub_button4.buttonMap.insert("url", "https://yangchenglin815.github.io/queryResult/login.html");
         buttonMenu3.subButtonList.append(sub_button4);
-        sub_button5.buttonMap.insert("name", "考试成绩");
-        sub_button5.buttonMap.insert("type", "view");
-        sub_button5.buttonMap.insert("url", "https://yangchenglin815.github.io/queryResult/login.html");
-        buttonMenu3.subButtonList.append(sub_button5);
         buttonList.append(buttonMenu1);
         buttonList.append(buttonMenu2);
         buttonList.append(buttonMenu3);

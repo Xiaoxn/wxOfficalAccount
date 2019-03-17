@@ -288,7 +288,7 @@ QString HttpServer::getElement(QString tagName, QString xmlStream)
 
 void HttpServer::MsgHandler(EventData_t eventData)
 {
-    QString content = QStringLiteral("我是黑魔仙 小乐！！！");
+    QString content = QStringLiteral("hello!");
     QString sendData =  QString("<xml>"
                                 "<ToUserName><![CDATA[%1]]></ToUserName>"
                                 "<FromUserName><![CDATA[%2]]></FromUserName>"

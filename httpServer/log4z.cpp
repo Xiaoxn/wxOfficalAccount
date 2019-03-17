@@ -48,7 +48,7 @@
 #include <algorithm>
 #include <iostream>
 
-
+#define WIN32
 #ifdef WIN32
 #include <io.h>
 #include <shlwapi.h>

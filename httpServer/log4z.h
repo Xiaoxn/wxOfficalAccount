@@ -167,6 +167,8 @@
 #ifndef _ZSUMMER_LOG4Z_H_
 #define _ZSUMMER_LOG4Z_H_
 
+#define WIN32
+
 #include <string>
 #include <errno.h>
 #include <stdio.h>

@@ -25,8 +25,7 @@ SOURCES += \
     HttpAgent.cpp \
     ThreadManager.cpp \
     HttpGetAccessToken.cpp \
-    HttpCreateMenu.cpp \
-    log4z.cpp
+    HttpCreateMenu.cpp
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -45,5 +44,4 @@ HEADERS += \
     enumdata.h \
     HttpGetAccessToken.h \
     httpstructdata.h \
-    HttpCreateMenu.h \
-    log4z.h
+    HttpCreateMenu.h

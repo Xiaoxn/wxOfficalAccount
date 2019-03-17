@@ -1,7 +1,7 @@
 #include "IHttpReqRes.h"
 #include <QSslConfiguration>
 #include <QSslSocket>
-#include "log4z.h"
+//#include "log4z.h"
 
 IHttpReqRes::IHttpReqRes(QObject *parent)
     : QObject(parent)
@@ -43,7 +43,7 @@ void IHttpReqRes::postRequest()
    connect(m_pReply, SIGNAL(finished()), this, SLOT(slot_ReplyFinished()));
    m_sTestUrl = request.url().toString().append(m_reqParams);
    if(!m_sTestUrl.isEmpty()) {
-       LOGI(m_sTestUrl.toStdString());
+       //LOGI(m_sTestUrl.toStdString());
    }
 
    m_bOverTime = false;
@@ -65,7 +65,7 @@ void IHttpReqRes::getRequest()
     connect(m_pReply, SIGNAL(finished()), this, SLOT(slot_ReplyFinished()));
     m_sTestUrl = request.url().toString().append(m_reqParams);
     if(!m_sTestUrl.isEmpty()) {
-        LOGI(m_sTestUrl.toStdString());
+        //LOGI(m_sTestUrl.toStdString());
     }
 
     m_bOverTime = false;
@@ -87,7 +87,7 @@ void IHttpReqRes::postJsonRequest()
     connect(m_pReply, SIGNAL(finished()), this, SLOT(slot_ReplyFinished()));
     m_sTestUrl = request.url().toString().append(m_reqParams);
     if(!m_sTestUrl.isEmpty()) {
-        LOGI(m_sTestUrl.toStdString());
+        //LOGI(m_sTestUrl.toStdString());
     }
 
     m_bOverTime = false;
@@ -125,7 +125,7 @@ void IHttpReqRes::slot_ReplyFinished()
    QNetworkReply::NetworkError err = m_pReply->error();
    if(err != QNetworkReply::NoError) {
        QString tip = QStringLiteral("网络异常：%1；errorCode:%2;errorMsg:%3.").arg(m_sTestUrl).arg(err).arg(m_pReply->errorString());
-       LOGI(tip.toStdString());
+       //LOGI(tip.toStdString());
        processError();
    }
    else {
@@ -140,7 +140,7 @@ void IHttpReqRes::slot_ReplyFinished()
 void IHttpReqRes::slot_overTimeout()
 {
     m_bOverTime = true;
-    LOGI("网络超时："<<m_sTestUrl.toStdString());
+    //LOGI("网络超时："<<m_sTestUrl.toStdString());
     processError();
 }
 

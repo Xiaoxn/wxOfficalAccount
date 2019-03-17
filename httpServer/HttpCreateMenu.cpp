@@ -5,7 +5,7 @@
 #include "enumdata.h"
 #include "constdata.h"
 #include "HttpSignal.h"
-#include "log4z.h"
+//#include "log4z.h"
 
 HttpCreateMenu::HttpCreateMenu(QList<ButtonMenu_t> buttonList, QString accessToken)
 {
@@ -26,11 +26,11 @@ void HttpCreateMenu::processResponse(QString strResult)
     if(!sc.property("errcode").isValid()) {
         nCode = e_connectServerError;
         sMsg = c_sServerJsonError;
-        LOGI("HttpCreateMenu 返回参数json格式错误");
+        //LOGI("HttpCreateMenu 返回参数json格式错误");
     }
 
     if(nCode != e_success) {
-        LOGI(this->getTestUrl().toStdString());
+        //LOGI(this->getTestUrl().toStdString());
     }
 
     HttpSignal::instance()->sigOnCreateMenu(nCode, sMsg);

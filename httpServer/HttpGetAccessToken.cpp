@@ -5,7 +5,7 @@
 #include "enumdata.h"
 #include "constdata.h"
 #include "HttpSignal.h"
-#include "log4z.h"
+//#include "log4z.h"
 
 HttpGetAccessToken::HttpGetAccessToken(QString sAppId, QString sAppSecret)
 {
@@ -30,7 +30,7 @@ void HttpGetAccessToken::processResponse(QString strResult)
    }
 
    if(sc.property("access_token").isValid()) {
-      LOGI(this->getTestUrl().toStdString());
+      //LOGI(this->getTestUrl().toStdString());
    }
    QString token = sc.property("access_token").toString();
    HttpSignal::instance()->sigOnGetAccessToken(nCode, sMsg, token);

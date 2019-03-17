@@ -366,7 +366,7 @@ void HttpServer::EventHandler(EventData_t eventData)
 {
     if(eventData.Event == c_sSubscribe){
         LOGI("已订阅");
-        QString content = QStringLiteral("欢迎来到魔法学校！！！");
+        QString content = QStringLiteral("Hello！");
         QString sendData =  QString("<xml>"
                                     "<ToUserName><![CDATA[%1]]></ToUserName>"
                                     "<FromUserName><![CDATA[%2]]></FromUserName>"

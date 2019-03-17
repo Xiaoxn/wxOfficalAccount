@@ -8,8 +8,8 @@ int main(int argc, char *argv[])
     QCoreApplication a(argc, argv);
 
     //初始化日志，设置日志的路径
-   // QString path = a.applicationDirPath() + "/log";
-   // HttpServer::StartLog(path.toLocal8Bit().data());
+    QString path = a.applicationDirPath() + "/log";
+    HttpServer::StartLog(path.toLocal8Bit().data());
 
     //创建服务对象，以8080作为程序端口启动服务程序
     HttpServer ser;

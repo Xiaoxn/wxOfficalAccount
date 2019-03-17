@@ -17,21 +17,14 @@
 #include <QJsonObject>
 #include <QJsonArray>
 #include <QFile>
-//#include "log4z.h"
+#include "log4z.h"
 
-#define TEST
+const QString TOKEN = "gongcx";
 
-const QString TOKEN = "yangcl";
-#ifdef TEST
-const QString APPID = "wx0775ae7b284f8c79";
-const QString APPSECRET = "48f1cda51c1e47223eadc863244a4cc8";
-#else
-const QString APPID = "wx2b92ecc8e517bef2";
-const QString APPSECRET = "4c3fafdbb34e84942dbc8cf0664c2c90";
-#endif
+const QString APPID = "wx7df83fb48bcd5a79";
+const QString APPSECRET = "b85078203d01c252ba186b5d0230300e";
 
 using namespace std;
-
 
 HttpServer::HttpServer(QObject *parent)
     : QObject(parent)
@@ -53,7 +46,7 @@ void HttpServer::run(quint16 port)
 {
     QHostAddress address;
     address.setAddress("127.0.0.1");
-    //LOGI("start listen "<<address.toString().toStdString()<<":"<<port);
+    LOGI("start listen "<<address.toString().toStdString()<<":"<<port);
     if(!m_tcpServer->listen(address, port))
     {
         qWarning()<<m_tcpServer->errorString();
@@ -63,14 +56,14 @@ void HttpServer::run(quint16 port)
 
 void HttpServer::StartLog(const char *logPath)
 {
-//    zsummer::log4z::ILog4zManager::getInstance()->setLoggerMonthdir(LOG4Z_MAIN_LOGGER_ID, true);
-//    zsummer::log4z::ILog4zManager::getInstance()->setLoggerDisplay(LOG4Z_MAIN_LOGGER_ID, true);
-//    zsummer::log4z::ILog4zManager::getInstance()->setLoggerLevel(LOG4Z_MAIN_LOGGER_ID, LOG_LEVEL_DEBUG);
-//    zsummer::log4z::ILog4zManager::getInstance()->setLoggerLimitsize(LOG4Z_MAIN_LOGGER_ID, 100);
-//    if (logPath) {
-//        zsummer::log4z::ILog4zManager::getInstance()->setLoggerPath(LOG4Z_MAIN_LOGGER_ID, logPath);
-//    }
-//    zsummer::log4z::ILog4zManager::getInstance()->start();
+    zsummer::log4z::ILog4zManager::getInstance()->setLoggerMonthdir(LOG4Z_MAIN_LOGGER_ID, true);
+    zsummer::log4z::ILog4zManager::getInstance()->setLoggerDisplay(LOG4Z_MAIN_LOGGER_ID, true);
+    zsummer::log4z::ILog4zManager::getInstance()->setLoggerLevel(LOG4Z_MAIN_LOGGER_ID, LOG_LEVEL_DEBUG);
+    zsummer::log4z::ILog4zManager::getInstance()->setLoggerLimitsize(LOG4Z_MAIN_LOGGER_ID, 100);
+    if (logPath) {
+        zsummer::log4z::ILog4zManager::getInstance()->setLoggerPath(LOG4Z_MAIN_LOGGER_ID, logPath);
+    }
+    zsummer::log4z::ILog4zManager::getInstance()->start();
 }
 
 void HttpServer::slotOnNewConnection()
@@ -104,7 +97,7 @@ void HttpServer::slotOnRead()
 
 void HttpServer::slotOnGetAccessToken(int nCode, QString sMsg, QString sToken)
 {
-    //LOGI("nCode: "<<nCode<<", sMsg: "<<sMsg.toStdString()<<", token: "<<sToken.toStdString());
+    LOGI("nCode: "<<nCode<<", sMsg: "<<sMsg.toStdString()<<", token: "<<sToken.toStdString());
     if(!sToken.isEmpty()) {
         m_token = sToken;
 
@@ -119,19 +112,15 @@ void HttpServer::slotOnGetAccessToken(int nCode, QString sMsg, QString sToken)
         buttonMenu2.buttonMap.insert("url", "https://m.toutiao.com/");
 
         buttonMenu3.buttonMap.insert("name", "教务系统");
-        ButtonMenu_t sub_button3, sub_button4, sub_button5;
-        sub_button3.buttonMap.insert("name", "今日课表");
+        ButtonMenu_t sub_button3, sub_button4;
+        sub_button3.buttonMap.insert("name", "本周课表");
         sub_button3.buttonMap.insert("type", "view");
-        sub_button3.buttonMap.insert("url", "https://yangchenglin815.github.io/timeTable/timeTable/src///LOGIn.html");
+        sub_button3.buttonMap.insert("url", "https://yangchenglin815.github.io/timeTable/timeTable/src/login.html");
         buttonMenu3.subButtonList.append(sub_button3);
-        sub_button4.buttonMap.insert("name", "明日课表");
-        sub_button4.buttonMap.insert("type", "click");
-        sub_button4.buttonMap.insert("key", "V1004");
+        sub_button4.buttonMap.insert("name", "考试成绩");
+        sub_button4.buttonMap.insert("type", "view");
+        sub_button4.buttonMap.insert("url", "https://yangchenglin815.github.io/queryResult/login.html");
         buttonMenu3.subButtonList.append(sub_button4);
-        sub_button5.buttonMap.insert("name", "考试成绩");
-        sub_button5.buttonMap.insert("type", "view");
-        sub_button5.buttonMap.insert("url", "https://yangchenglin815.github.io/queryResult///LOGIn.html");
-        buttonMenu3.subButtonList.append(sub_button5);
         buttonList.append(buttonMenu1);
         buttonList.append(buttonMenu2);
         buttonList.append(buttonMenu3);
@@ -142,7 +131,7 @@ void HttpServer::slotOnGetAccessToken(int nCode, QString sMsg, QString sToken)
 
 void HttpServer::slotOnCreateMenu(int nCode, QString sMsg)
 {
-    //LOGI("HttpCreateMenu respond: "<<nCode<<"  "<<sMsg.toStdString());
+    LOGI("HttpCreateMenu respond: "<<nCode<<"  "<<sMsg.toStdString());
 }
 
 QString HttpServer::getParameter(QString key, QByteArray dataArray)
@@ -191,18 +180,18 @@ void HttpServer::protocolHandler(QByteArray array)
     QStringList list = buf.split("\r\n\r\n");
     if(list.size() > 1) {
         QString recvData = list.at(1);
-        //LOGI("recv xml: "<<recvData.toStdString());
+        LOGI("recv xml: "<<recvData.toStdString());
         EventData_t eventData;
         eventData.MsgType = getElement("MsgType", recvData);
         eventData.ToUserName = getElement("ToUserName", recvData);
         eventData.FromUserName = getElement("FromUserName", recvData);
         eventData.Event = getElement("Event", recvData);
         if(eventData.MsgType == c_sEvent){
-            //LOGI("处理事件推送消息");
+            LOGI("处理事件推送消息");
             EventHandler(eventData);
         }
         else if(eventData.MsgType == c_sMsg) {
-            //LOGI("处理消息回复");
+            LOGI("处理消息回复");
             MsgHandler(eventData);
         }
     }
@@ -228,7 +217,7 @@ void HttpServer::protocolTest(QByteArray array)
             list = protocolHead.split("/");
             if(list.size() > 1) {
                 QString param = list.at(list.size() - 1);
-                //LOGI("reuqest param: "<<param.toStdString());
+                LOGI("reuqest param: "<<param.toStdString());
                 if(param == "add") {
                     addInfo(recvData);
                 }
@@ -268,7 +257,7 @@ void HttpServer::postData(QString content)
     if(m_socket != nullptr) {
         QByteArray headData;
         headData.append(http);
-        //LOGI("send data: "<<headData.data());
+        LOGI("send data: "<<headData.data());
         m_socket->write(headData);
         m_socket->flush();
     }
@@ -299,14 +288,14 @@ QString HttpServer::getElement(QString tagName, QString xmlStream)
 
 void HttpServer::MsgHandler(EventData_t eventData)
 {
-    QString content = QStringLiteral("我是黑魔仙 小乐！！！");
+    QString content = QStringLiteral("hello!");
     QString sendData =  QString("<xml>"
                                 "<ToUserName><![CDATA[%1]]></ToUserName>"
                                 "<FromUserName><![CDATA[%2]]></FromUserName>"
                                 "<CreateTime>%3</CreateTime>"
                                 "<MsgType><![CDATA[text]]></MsgType>"
                                 "<Content><![CDATA[%4]]></Content>"
-                                "</xml>").arg(eventData.FromUserName).arg(eventData.ToUserName).arg(QDateTime::currentDateTimeUtc().toMSecsSinceEpoch()).arg(content);
+                                "</xml>").arg(eventData.FromUserName).arg(eventData.ToUserName).arg(QDateTime::currentDateTimeUtc().toSecsSinceEpoch()).arg(content);
     postData(sendData);
 }
 
@@ -319,7 +308,7 @@ void HttpServer::ClickedEventHandler(EventData_t eventData)
                                 "<CreateTime>%3</CreateTime>"
                                 "<MsgType><![CDATA[text]]></MsgType>"
                                 "<Content><![CDATA[%4]]></Content>"
-                                "</xml>").arg(eventData.FromUserName).arg(eventData.ToUserName).arg(QDateTime::currentDateTimeUtc().toMSecsSinceEpoch()).arg(content);
+                                "</xml>").arg(eventData.FromUserName).arg(eventData.ToUserName).arg(QDateTime::currentDateTimeUtc().toSecsSinceEpoch()).arg(content);
     postData(sendData);
 }
 
@@ -376,7 +365,7 @@ void HttpServer::getListInfo()
 void HttpServer::EventHandler(EventData_t eventData)
 {
     if(eventData.Event == c_sSubscribe){
-        //LOGI("已订阅");
+        LOGI("已订阅");
         QString content = QStringLiteral("欢迎来到魔法学校！！！");
         QString sendData =  QString("<xml>"
                                     "<ToUserName><![CDATA[%1]]></ToUserName>"
@@ -384,16 +373,16 @@ void HttpServer::EventHandler(EventData_t eventData)
                                     "<CreateTime>%3</CreateTime>"
                                     "<MsgType><![CDATA[text]]></MsgType>"
                                     "<Content><![CDATA[%4]]></Content>"
-                                    "</xml>").arg(eventData.FromUserName).arg(eventData.ToUserName).arg(QDateTime::currentDateTimeUtc().toMSecsSinceEpoch()).arg(content);
+                                    "</xml>").arg(eventData.FromUserName).arg(eventData.ToUserName).arg(QDateTime::currentDateTimeUtc().toSecsSinceEpoch()).arg(content);
         postData(sendData);
 
     }
     else if(eventData.Event == c_sUnsubscribe){
-        //LOGI("已取消订阅");
+        LOGI("已取消订阅");
         postData("");
     }
     else if(eventData.Event == c_sClicked) {
-        //LOGI("点击菜单事件触发");
+        LOGI("点击菜单事件触发");
         ClickedEventHandler(eventData);
     }
 }

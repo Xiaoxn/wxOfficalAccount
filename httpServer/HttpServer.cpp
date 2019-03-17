@@ -19,19 +19,12 @@
 #include <QFile>
 #include "log4z.h"
 
-#define TEST
+const QString TOKEN = "gongcx";
 
-const QString TOKEN = "yangcl";
-#ifdef TEST
-const QString APPID = "wx0775ae7b284f8c79";
-const QString APPSECRET = "48f1cda51c1e47223eadc863244a4cc8";
-#else
-const QString APPID = "wx2b92ecc8e517bef2";
-const QString APPSECRET = "4c3fafdbb34e84942dbc8cf0664c2c90";
-#endif
+const QString APPID = "wx7df83fb48bcd5a79";
+const QString APPSECRET = "b85078203d01c252ba186b5d0230300e";
 
 using namespace std;
-
 
 HttpServer::HttpServer(QObject *parent)
     : QObject(parent)

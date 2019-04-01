@@ -115,11 +115,11 @@ void HttpServer::slotOnGetAccessToken(int nCode, QString sMsg, QString sToken)
         ButtonMenu_t sub_button3, sub_button4;
         sub_button3.buttonMap.insert("name", "本周课表");
         sub_button3.buttonMap.insert("type", "view");
-        sub_button3.buttonMap.insert("url", "https://yangchenglin815.github.io/timeTable/timeTable/src/login.html");
+        sub_button3.buttonMap.insert("url", "https://xiaoxn.github.io/wxOfficalAccount/timeTable/src/login.html");
         buttonMenu3.subButtonList.append(sub_button3);
         sub_button4.buttonMap.insert("name", "考试成绩");
         sub_button4.buttonMap.insert("type", "view");
-        sub_button4.buttonMap.insert("url", "https://yangchenglin815.github.io/queryResult/login.html");
+        sub_button4.buttonMap.insert("url", "https://xiaoxn.github.io/wxOfficalAccount/queryResult/login.html");
         buttonMenu3.subButtonList.append(sub_button4);
         buttonList.append(buttonMenu1);
         buttonList.append(buttonMenu2);

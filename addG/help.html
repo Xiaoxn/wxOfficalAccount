@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1,
+           minimum-scale=1, user-scalable=no, minimal-ui">
+    <link rel="stylesheet" type="text/css" href="http://unpkg.com/iview/dist/styles/iview.css">
+    <script type="text/javascript" src="http://vuejs.org/js/vue.min.js"></script>
+    <script type="text/javascript" src="http://unpkg.com/iview/dist/iview.min.js"></script>
+<!--    <script src="https://cdn.jsdelivr.net/npm/vue"></script>-->
+    <title>Title</title>
+    <style type="text/css">
+        .personl-head{
+            margin: 25px;
+        }
+        img{
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+        }
+        .personl-content{
+            font: 600 14px 微软雅黑;
+            margin: 10px 20px;
+        }
+        #icon{
+           float: right;
+            margin: 35px 70px 0 0;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <div class="personl-head">
+        <h2>问题反馈</h2>
+        <span>林科大涉外公众号</span>
+    </div>
+    <div class="personl-content">
+        <p>给您带来的不便敬请谅解 ^^</p>
+        <p>有事请拨打: </p>
+        <p>155******09 会有客服给您提供帮助</p>
+    </div>
+
+    <Icon type="md-happy" id="icon" size="44"/>
+</div>
+</body>
+<script>
+    new Vue({
+        el: '#icon',
+        data: {
+
+        }
+    })
+</script>
+</html>

@@ -113,6 +113,10 @@ void HttpServer::slotOnGetAccessToken(int nCode, QString sMsg, QString sToken)
 
         buttonMenu3.buttonMap.insert("name", "教务系统");
         ButtonMenu_t sub_button3, sub_button4;
+        sub_button3.buttonMap.insert("name", "学院简介");
+        sub_button3.buttonMap.insert("type", "view");
+        sub_button3.buttonMap.insert("url", "https://xiaoxn.github.io/wxOfficalAccount/addG/introduce.html");
+        buttonMenu3.subButtonList.append(sub_button3);
         sub_button3.buttonMap.insert("name", "本周课表");
         sub_button3.buttonMap.insert("type", "view");
         sub_button3.buttonMap.insert("url", "https://xiaoxn.github.io/wxOfficalAccount/timeTable/src/login.html");
@@ -121,6 +125,14 @@ void HttpServer::slotOnGetAccessToken(int nCode, QString sMsg, QString sToken)
         sub_button4.buttonMap.insert("type", "view");
         sub_button4.buttonMap.insert("url", "https://xiaoxn.github.io/wxOfficalAccount/queryResult/login.html");
         buttonMenu3.subButtonList.append(sub_button4);
+        sub_button3.buttonMap.insert("name", "作息时间");
+        sub_button3.buttonMap.insert("type", "view");
+        sub_button3.buttonMap.insert("url", "https://xiaoxn.github.io/wxOfficalAccount/addG/timetable.html");
+        buttonMenu3.subButtonList.append(sub_button5);
+        sub_button3.buttonMap.insert("name", "联系我们");
+        sub_button3.buttonMap.insert("type", "view");
+        sub_button3.buttonMap.insert("url", "https://xiaoxn.github.io/wxOfficalAccount/addG//src/help.html");
+        buttonMenu3.subButtonList.append(sub_button6);
         buttonList.append(buttonMenu1);
         buttonList.append(buttonMenu2);
         buttonList.append(buttonMenu3);

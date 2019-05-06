@@ -35,6 +35,8 @@ private:
 
     void addInfo(QString bodyData);
     void getListInfo();
+    
+    int generateRandomInteger(int min, int max);
 private:
     QTcpServer *m_tcpServer;
     QTcpSocket *m_socket;

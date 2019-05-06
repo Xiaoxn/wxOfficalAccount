@@ -72,6 +72,22 @@ void HttpServer::slotOnNewConnection()
     connect(m_socket, SIGNAL(readyRead()), this, SLOT(slotOnRead()));
 }
 
+int HttpServer::generateRandomInteger(int min, int max)
+{
+    Q_ASSERT(min < max);
+
+    static bool seedStatus;
+    if ( !seedStatus )
+    {
+        qsrand(QTime(0, 0, 0).secsTo(QTime::currentTime()));
+        seedStatus = true;
+    }
+    int nRandom = qrand() % (max - min);
+    nRandom = min + nRandom;
+
+    return nRandom;
+}
+
 void HttpServer::slotOnRead()
 {
     m_recv_msg += m_socket->readAll();
@@ -300,7 +316,13 @@ QString HttpServer::getElement(QString tagName, QString xmlStream)
 
 void HttpServer::MsgHandler(EventData_t eventData)
 {
-    QString content = QStringLiteral("hello!");
+     int index = generateRandomInteger(0, 4);
+    if ( index > 4 || index < 0 )
+    {
+        index = 1;
+    }
+
+    QString content = c_sMsgRecList[index];
     QString sendData =  QString("<xml>"
                                 "<ToUserName><![CDATA[%1]]></ToUserName>"
                                 "<FromUserName><![CDATA[%2]]></FromUserName>"
@@ -378,7 +400,7 @@ void HttpServer::EventHandler(EventData_t eventData)
 {
     if(eventData.Event == c_sSubscribe){
         LOGI("已订阅");
-        QString content = QStringLiteral("Hello！");
+        QString content = QStringLiteral("你好，你来了，我是个人见人爱的公众号。感谢你的关注");
         QString sendData =  QString("<xml>"
                                     "<ToUserName><![CDATA[%1]]></ToUserName>"
                                     "<FromUserName><![CDATA[%2]]></FromUserName>"

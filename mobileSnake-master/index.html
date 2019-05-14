@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>移动版贪吃蛇</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/touch.js"></script>
+</head>
+<body>
+    <div class="bigbig">
+        <div class="bigbox" id="box">
+            <ul id="ulBox"></ul>
+        </div>
+                        
+        <div class="oper">
+            <div class="pp">
+                <p>最高分：<span id="max">0</span></p>
+                <p>当前得分：<span id="now">0</span></p>
+            </div>
+            <select name="" id="level">
+                <option value="500">简单</option>
+                <option value="300">中等</option>
+                <option value="200">困难</option>
+            </select>
+            <input type="button" id="start" value="START">
+            <input type="button" id="timeOut" value="TIME OUT">
+        </div>   
+    </div>
+    
+    <audio src="mp3/bgm.mp3" loop id="bgm"/>
+    <audio src="mp3/eat.mp3" id="eat"/>
+    <audio src="mp3/dead.wav" id="dead"/>
+
+    <script type="text/javascript" src="js/js.js"></script>  
+</body>
+</html>

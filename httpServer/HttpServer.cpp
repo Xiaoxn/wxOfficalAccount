@@ -136,7 +136,7 @@ void HttpServer::slotOnGetAccessToken(int nCode, QString sMsg, QString sToken)
         sub_button8.buttonMap.insert("name", "联系我们");
         sub_button8.buttonMap.insert("type", "view");
         sub_button8.buttonMap.insert("url", "https://xiaoxn.github.io/wxOfficalAccount/addG/help.html");
-        buttonMenu3.subButtonList.append(sub_button7);
+        buttonMenu3.subButtonList.append(sub_button8);
         buttonList.append(buttonMenu1);
         buttonList.append(buttonMenu2);
         buttonList.append(buttonMenu3);

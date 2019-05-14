@@ -112,7 +112,7 @@ void HttpServer::slotOnGetAccessToken(int nCode, QString sMsg, QString sToken)
         buttonMenu2.buttonMap.insert("url", "https://m.toutiao.com/");
 
         buttonMenu3.buttonMap.insert("name", "教务系统");
-        ButtonMenu_t sub_button3, sub_button4, sub_button5, sub_button6, sub_button7;
+        ButtonMenu_t sub_button3, sub_button4, sub_button5, sub_button6, sub_button7,sub_button8;
         sub_button3.buttonMap.insert("name", "学院简介");
         sub_button3.buttonMap.insert("type", "view");
         sub_button3.buttonMap.insert("url", "https://xiaoxn.github.io/wxOfficalAccount/addG/introduce.html");
@@ -129,9 +129,13 @@ void HttpServer::slotOnGetAccessToken(int nCode, QString sMsg, QString sToken)
         sub_button6.buttonMap.insert("type", "view");
         sub_button6.buttonMap.insert("url", "https://xiaoxn.github.io/wxOfficalAccount/addG/timetable.html");
         buttonMenu3.subButtonList.append(sub_button6);
-        sub_button7.buttonMap.insert("name", "联系我们");
+        sub_button7.buttonMap.insert("name", "娱乐一下");
         sub_button7.buttonMap.insert("type", "view");
-        sub_button7.buttonMap.insert("url", "https://xiaoxn.github.io/wxOfficalAccount/addG/help.html");
+        sub_button7.buttonMap.insert("url", "https://xiaoxn.github.io/wxOfficalAccount/mobileSnake-master/index.html");
+        buttonMenu3.subButtonList.append(sub_button7);
+        sub_button8.buttonMap.insert("name", "联系我们");
+        sub_button8.buttonMap.insert("type", "view");
+        sub_button8.buttonMap.insert("url", "https://xiaoxn.github.io/wxOfficalAccount/addG/help.html");
         buttonMenu3.subButtonList.append(sub_button7);
         buttonList.append(buttonMenu1);
         buttonList.append(buttonMenu2);

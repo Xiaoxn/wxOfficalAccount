@@ -27,7 +27,7 @@ const QString c_sUnsubscribe = "unsubscribe";  //取关事件
 const QString c_sClicked = "CLICK";           //点击事件
 
 //自定义回复内容
-QStringList c_sMsgRecList = {
+static QStringList c_sMsgRecList = {
     QStringLiteral("亲爱的同学，你好啊欢迎关注涉外公众号，实时掌握学院最新动态。"),
     QStringLiteral("如需帮助，请点击右下方的联系我们."),
     QStringLiteral("今天天气晴."),
